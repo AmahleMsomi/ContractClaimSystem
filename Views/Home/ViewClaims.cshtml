@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ContractClaimSystem.Models.Claim>
+
+@{
+    ViewData["Title"] = "View Claims";
+}
+
+<h2>All Submitted Claims</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Lecturer Surname</th>
+            <th>Employee No</th>
+            <th>Contact Details</th>
+            <th>Modules</th>
+            <th>Total Hours</th>
+            <th>Total Pay (Calculated)</th>
+            <th>Status</th>
+            <th>Approver Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <!-- Lecturer Information -->
+                <td>@claim.LecturerName</td>
+                <td>@claim.LecturerSurname</td>
+                <td>@claim.EmployeeNo</td>
+                <td>@claim.ContactDetails</td>
+
+                <!-- Module Details -->
+                <td>
+                    <ul>
+                        @foreach (var module in claim.Modules)
+                        {
+                            <li>
+                                <strong>Module:</strong> @module.ModuleName<br />
+                                <strong>Programme:</strong> @module.Programme<br />
+                                <strong>Hours:</strong> @module.HoursWorked<br />
+                                <strong>Rate:</strong> @module.HourlyRate<br />
+                            </li>
+                        }
+                    </ul>
+                </td>
+
+                <!-- Calculated Total Hours -->
+                <td>@claim.Modules.Sum(m => m.HoursWorked)</td>
+
+                <!-- Calculated Total Pay -->
+                <td>@claim.Modules.Sum(m => m.HoursWorked * m.HourlyRate)</td>
+
+                <!-- Status (Pending, Approved, Rejected) -->
+                <td>
+                    @if (claim.IsApproved == null)
+                    {
+                        <span class="badge badge-warning">Pending</span>
+                    }
+                    else if (claim.IsApproved == true)
+                    {
+                        <span class="badge badge-success">Approved</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Rejected</span>
+                    }
+                </td>
+
+                <!-- Approver Actions -->
+                <td>
+                    <!-- If not yet approved/rejected -->
+                    @if (claim.IsApproved == null) 
+                    {
+                        <form method="post" asp-action="ApproveClaim" asp-route-id="@claim.Id">
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+
+                        <form method="post" asp-action="RejectClaim" asp-route-id="@claim.Id" style="margin-top: 5px;">
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    }
+                    else
+                    {
+                        @if (claim.IsApproved == true)
+                        {
+                            <span>Claim Approved</span>
+                        }
+                        else
+                        {
+                            <span>Claim Rejected</span>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
