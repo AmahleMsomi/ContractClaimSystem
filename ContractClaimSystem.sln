@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractClaimSystem", "ContractClaimSystem.csproj", "{698C242F-780C-4CC7-AFEF-BCFF0D313427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractClaimSystem", "ContractClaimSystem.csproj", "{698C242F-780C-4CC7-AFEF-BCFF0D313427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsControllerTets.cs", "..\ClaimsControllerTets.cs\ClaimsControllerTets.cs.csproj", "{6E220366-ABE4-4DE6-9819-19CEBEC48CE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7CE3865-C39D-4F9F-A553-02DE87907484}"
+	ProjectSection(SolutionItems) = preProject
+		Program.cs = Program.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{698C242F-780C-4CC7-AFEF-BCFF0D313427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{698C242F-780C-4CC7-AFEF-BCFF0D313427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{698C242F-780C-4CC7-AFEF-BCFF0D313427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E220366-ABE4-4DE6-9819-19CEBEC48CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E220366-ABE4-4DE6-9819-19CEBEC48CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E220366-ABE4-4DE6-9819-19CEBEC48CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E220366-ABE4-4DE6-9819-19CEBEC48CE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
